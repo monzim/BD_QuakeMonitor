@@ -5,12 +5,13 @@ import { EarthquakeFeature } from '../types';
 
 interface StatsPanelProps {
   quakes: EarthquakeFeature[];
+  loading?: boolean;
 }
 
-export const StatsPanel: React.FC<StatsPanelProps> = ({ quakes }) => {
+export const StatsPanel: React.FC<StatsPanelProps> = ({ quakes, loading = false }) => {
   const total = quakes.length;
   const maxMag = quakes.length > 0 ? Math.max(...quakes.map(q => q.properties.mag)) : 0;
-  
+
   const oneDayAgo = Date.now() - 24 * 60 * 60 * 1000;
   const recentSignificant = quakes.filter(q => q.properties.time > oneDayAgo && q.properties.mag >= 4.0).length;
 
@@ -25,6 +26,20 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({ quakes }) => {
   const labelClass = "flex items-center gap-2 text-slate-500 dark:text-slate-400 mb-1 text-xs font-bold uppercase tracking-wider";
   const valueClass = "text-2xl md:text-3xl font-mono font-bold text-slate-800 dark:text-white";
   const subClass = "text-[10px] text-slate-400 dark:text-slate-500";
+
+  if (loading) {
+    return (
+      <div className="grid grid-cols-3 gap-3 mb-6">
+        {[1, 2, 3].map((i) => (
+          <div key={i} className={`${cardClass} animate-pulse`}>
+            <div className="h-4 w-20 bg-slate-200 dark:bg-slate-700 rounded mb-2"></div>
+            <div className="h-8 w-16 bg-slate-200 dark:bg-slate-700 rounded mb-1"></div>
+            <div className="h-3 w-24 bg-slate-200 dark:bg-slate-700 rounded"></div>
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className="grid grid-cols-3 gap-3 mb-6">

@@ -87,7 +87,7 @@ const App: React.FC = () => {
 
       <main className="max-w-7xl mx-auto px-4 py-6">
         {/* Top Section: Key Stats */}
-        <StatsPanel quakes={quakes} />
+        <StatsPanel quakes={quakes} loading={loading} />
 
         {/* Main Interactive Section: Map & Feed */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8 h-auto lg:h-[500px]">
