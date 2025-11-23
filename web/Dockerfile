@@ -9,6 +9,9 @@ RUN npm install
 
 COPY . .
 
+ARG BACKEND_URL=https://api.quake.monzim.com
+ENV BACKEND_URL=$BACKEND_URL
+
 RUN npm run build
 
 # Stage 2: Serve the React application with Nginx
