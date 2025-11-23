@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BD Quake Monitor</title>
+  <meta name="description"
+    content="Monitor earthquakes in Bangladesh and surrounding regions in real-time. Get instant alerts and visualize seismic activity on an interactive map." />
+  <meta name="keywords"
+    content="Bangladesh, Earthquake, Quake, Monitor, Seismic, Real-time, Alert, BD Quake, Azraf Al Monzim" />
+  <meta name="author" content="Azraf Al Monzim" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://quake.monzim.com" />
+  <meta property="og:title" content="BD Quake Monitor" />
+  <meta property="og:description" content="Real-time earthquake monitoring for Bangladesh and surrounding regions." />
+  <meta property="og:image" content="https://monzim.com/og-image.jpg" />
+  <!-- Placeholder or actual image if available -->
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://quake.monzim.com" />
+  <meta property="twitter:title" content="BD Quake Monitor" />
+  <meta property="twitter:description"
+    content="Real-time earthquake monitoring for Bangladesh and surrounding regions." />
+  <meta property="twitter:image" content="https://monzim.com/og-image.jpg" />
+
+  <!-- Developer Info -->
+  <meta name="developer" content="Azraf Al Monzim (monzim.com)" />
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+    data-cf-beacon='{"token": "c6239be3ab7e453fa54b94a27e6ab0c4"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            slate: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              200: '#e2e8f0',
+              300: '#cbd5e1',
+              400: '#94a3b8',
+              500: '#64748b',
+              600: '#475569',
+              700: '#334155',
+              800: '#1e293b',
+              850: '#172033',
+              900: '#0f172a',
+              950: '#020617',
+            },
+            monitor: {
+              green: '#10b981',
+              yellow: '#fbbf24',
+              orange: '#f97316',
+              red: '#ef4444',
+              danger: '#b91c1c',
+            }
+          },
+          animation: {
+            'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    /* Custom scrollbar for dashboard feel */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    .dark ::-webkit-scrollbar-thumb {
+      background: #334155;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    .dark ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+
+    body {
+      background-color: #f8fafc;
+      /* Light mode default */
+      color: #0f172a;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .dark body {
+      background-color: #020617;
+      color: #e2e8f0;
+    }
+
+    /* Map Override for Popups */
+    .leaflet-popup-content-wrapper,
+    .leaflet-popup-tip {
+      background: white;
+      color: #0f172a;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      border-radius: 0.5rem;
+    }
+
+    .dark .leaflet-popup-content-wrapper,
+    .dark .leaflet-popup-tip {
+      background: #1e293b;
+      color: #e2e8f0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+    }
+
+    .leaflet-container a {
+      color: #0284c7;
+    }
+
+    .dark .leaflet-container a {
+      color: #38bdf8;
+    }
+  </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "recharts": "https://aistudiocdn.com/recharts@^3.4.1",
+    "leaflet": "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js"
+  }
+}
+</script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>

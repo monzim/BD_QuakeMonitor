@@ -1,0 +1,5 @@
+{
+  "name": "BD Quake Monitor",
+  "description": "Real-time earthquake monitoring dashboard for Bangladesh using USGS data and Gemini AI analysis.",
+  "requestFramePermissions": []
+}
